@@ -121,9 +121,3 @@ Este repositorio foi iniciado a partir do contexto educacional da **DIO** e expa
 - testes automatizados
 - manipulacao de arquivos no Node.js
 
-## Proximos passos (sugestoes)
-
-- checkout com historico de pedidos
-- geracao de recibo em `.txt`
-- cobertura de testes para CLI
-- suporte a catalogo de produtos externo
