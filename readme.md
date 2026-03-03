@@ -1,20 +1,35 @@
-# Carrinho Shopee (Projeto da DIO)
+# Carrinho Shopee em Node.js
 
-Este repositorio e uma evolucao do desafio de Node.js da [DIO](https://www.dio.me/), com novas regras de negocio para simular um carrinho de compras.
+Projeto de estudo em JavaScript/Node.js inspirado no desafio da **DIO (Digital Innovation One)** para simular a logica de um carrinho de compras.
 
-## O que foi implementado
+## Visao geral
 
-- Validacao de dados ao criar item (`nome`, `preco`, `quantidade`)
-- Consolidacao de itens repetidos no carrinho
-- Remocao por unidade do produto
-- Cupons de desconto (`DIO10`, `DIO20`, `FRETEGRATIS`)
-- Calculo de frete com regra de frete gratis por valor minimo
-- Resumo completo do pedido (subtotal, descontos, frete e total)
-- Persistencia do carrinho em arquivo JSON (`data/cart.json`)
-- CLI interativa com menu para operacoes de carrinho
-- Testes automatizados com `node:test`
+Este projeto implementa regras comuns de e-commerce:
 
-## Estrutura
+- cadastro e validacao de itens
+- consolidacao de produtos repetidos
+- aplicacao de cupons
+- calculo de frete e total final
+- persistencia do estado em arquivo JSON
+- interface CLI interativa
+
+## Funcionalidades
+
+- Validacao ao criar item (`nome`, `preco`, `quantidade`)
+- Soma de quantidade para itens com o mesmo nome
+- Remocao de uma unidade por vez
+- Exclusao de item por nome
+- Cupons:
+  - `DIO10` (10% nos produtos)
+  - `DIO20` (20% nos produtos)
+  - `FRETEGRATIS` (100% de desconto no frete)
+- Frete configurado:
+  - `R$ 12,00` abaixo de `R$ 250,00`
+  - gratis a partir de `R$ 250,00`
+- Resumo de compra com subtotal, descontos, frete e total
+- Salvamento/carregamento do carrinho em `data/cart.json`
+
+## Estrutura do projeto
 
 ```txt
 src/
@@ -26,47 +41,89 @@ src/
     item.js
 test/
   cart.test.js
+data/
+  cart.json (gerado automaticamente)
 ```
 
 ## Requisitos
 
-- Node.js 18+
+- Node.js 18 ou superior
+- npm
 
-## Como executar
+## Instalacao
 
 ```bash
 npm install
+```
+
+## Como executar
+
+Fluxo de exemplo:
+
+```bash
 npm run start
 ```
 
-`npm run start` executa um fluxo de exemplo e salva automaticamente o estado do carrinho.
+Esse comando executa um cenário padrao e salva o estado do carrinho.
 
-## Modo interativo (CLI)
+## CLI interativa
+
+Para operar o carrinho manualmente:
 
 ```bash
 npm run cli
 ```
 
-No modo CLI, voce pode:
+Menu disponivel:
 
-- Adicionar/remover itens
-- Aplicar/remover cupom
-- Limpar carrinho
-- Visualizar resumo
-- Salvar e sair com persistencia
+1. Listar carrinho  
+2. Adicionar item  
+3. Remover uma unidade  
+4. Deletar item por nome  
+5. Aplicar cupom  
+6. Remover cupom  
+7. Mostrar resumo  
+8. Limpar carrinho  
+9. Salvar carrinho  
+0. Sair (salvando automaticamente)
 
-## Como testar
+## Testes
 
 ```bash
 npm test
 ```
 
-## Exemplo de cupons
+Cobertura atual inclui:
 
-- `DIO10`: 10% de desconto nos produtos
-- `DIO20`: 20% de desconto nos produtos
-- `FRETEGRATIS`: 100% de desconto no frete
+- regras de adicao/remocao
+- validacao de item
+- aplicacao de cupom invalido/valido
+- regra de frete gratis
+- persistencia (save/load)
+- limpeza completa do carrinho
 
-## Creditos
+## Persistencia de dados
 
-Projeto base do desafio da **DIO (Digital Innovation One)**, expandido com novas implementacoes para estudo de logica, modularizacao e regras de negocio em Node.js.
+O carrinho e salvo no arquivo:
+
+```txt
+data/cart.json
+```
+
+Se o arquivo nao existir, ele e criado automaticamente na primeira operacao de salvamento.
+
+## Projeto base (DIO)
+
+Este repositorio foi iniciado a partir do contexto educacional da **DIO** e expandido com novas implementacoes para pratica de:
+
+- modularizacao
+- regras de negocio
+- testes automatizados
+- manipulacao de arquivos no Node.js
+
+## Proximos passos (sugestoes)
+
+- checkout com historico de pedidos
+- geracao de recibo em `.txt`
+- cobertura de testes para CLI
+- suporte a catalogo de produtos externo
