@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "name": "hotwheels ferrari",
+      "price": 20.99,
+      "quantity": 3
+    },
+    {
+      "name": "hotwheels lamborghini",
+      "price": 39.99,
+      "quantity": 2
+    },
+    {
+      "name": "mouse",
+      "price": 20,
+      "quantity": 50
+    }
+  ],
+  "coupon": {
+    "code": "DIO10",
+    "type": "percentage",
+    "value": 10
+  }
+}
